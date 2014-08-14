@@ -1,6 +1,7 @@
 require "spec_helper"
 require "parallel_tests/cli"
 require "parallel_tests/rspec/runner"
+require "parallel_tests/Calabash/runner"
 
 
 describe ParallelTests::CLI do
@@ -45,6 +46,13 @@ describe ParallelTests::CLI do
       subject.should_receive(:require).with("parallel_tests/rspec/runner")
       subject.send(:load_runner, "rspec").should == ParallelTests::RSpec::Runner
     end
+
+    it "requires and loads cucumber-calabash runner" do
+      subject.should_receive(:require).with("parallel_tests/calabash/runner")
+      subject.send(:load_runner, "calabash").should == ParallelTests::Calabash::Runner
+    end
+
+
 
     it "requires and loads runner with underscores" do
       subject.should_receive(:require).with("parallel_tests/my_test_runner/runner")
