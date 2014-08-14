@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 $LOAD_PATH << File.expand_path("../../lib", __FILE__)
-puts "sdsds"
 puts ENV['GEM_HOME']
-#require "parallel_tests"
+require "parallel_tests"
 puts "donennn"
-
-
-#ParallelTests::CLI.new.run(["--type", "calabash"] + ARGV)
+ParallelTests::CLI.new.run(["--type", "calabash"] + ARGV)
